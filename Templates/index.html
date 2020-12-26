@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bitcoin Price Prediction</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+
+  <body
+    style="
+      background-image:url(https://s27389.pcdn.co/wp-content/uploads/2020/06/bitcoin-cryptocurrencies-perfect-hedge-covid-19-crisis.jpeg);     
+      background-size: cover;
+    "
+  >
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <style>
+    .form-group{
+      margin-bottom: 1rem;
+  }
+  
+  ::placeholder { 
+      color: white;
+      opacity: 1; 
+    }
+  
+    /*input {
+      border-top-style: hidden;
+      border-right-style: hidden;
+      border-left-style: hidden;
+      border-bottom-style: hidden;
+      text-align: center;
+    }*/
+  
+    input[type="text"]
+    {
+        padding: 0px;
+    }
+  
+    .modal-content {
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      width: 100%;
+      pointer-events: auto;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid rgba(0,0,0,.2);
+      border-radius: .3rem;
+      outline: 0;
+  }
+  .modal-header {
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-align: start;
+          align-items: flex-start;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+          padding: 1rem 1rem;
+          border-bottom: 1px solid #dee2e6;
+          border-top-left-radius: .3rem;
+          border-top-right-radius: .3rem;
+      }
+  .card{
+      height: 20%;
+  }
+
+  body{
+    background-image: url('https://s27389.pcdn.co/wp-content/uploads/2020/06/bitcoin-cryptocurrencies-perfect-hedge-covid-19-crisis.jpeg');
+  }
+  
+  </style>
+
+    <div class="container">
+      <div class="row" style="text-align: center; margin-top: 100px; ">
+        <div class="col-7" style="color: white; background: rgba(0, 0, 0, 0.4);" >
+            <h1 class="m-5" style="font-size: 38px;"> 
+                <strong>Bitcoin Price Prediction System</strong> 
+            </h1>
+
+            <p class="ml-5" style="font-weight: bolder; color: green; text-align: left; font-size: 18px; margin-top: 8px;">
+                Assalam-o-Alaikum
+            </p>
+
+            <ul class="ml-4 mr-4" style="text-align: justify; font-size: 16px;">
+            <li>Bitcoin (₿) is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto and started in 2009 when its implementation was released as open-source software</li>
+            <li>It is a decentralized digital currency without a central bank or single administrator. Transactions are verified by network nodes through cryptography and recorded in a public distributed ledger called a blockchain. Bitcoins are created as a reward for a process known as mining.Research produced that in 2017, there were 2.9 to 5.8 million unique users using a cryptocurrency wallet, most of them using bitcoin.</li>
+            <li>The main aim of this project is to predict the price of bitcoin.</li>
+            </ul>
+
+            
+            
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target=".bd-example-modal-lg" style="width: 200px; margin-left: 50px; margin-bottom: 50px; margin-top: 20px; float: left;" >
+                Read Instructions
+            </button>
+            
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                      <div class="modal-header" style="text-align: center;">
+                          <h4 class="modal-title" style="color: black; margin-left: 40%;"><strong> Instructions</strong></h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="w-100 text-center" style="background: #009cff; color: white; height: 50px">
+                        <h5 style="padding-top: 10px;">Input Attributes Details</h5>
+                        </div>
+
+                        <div id="accordion">
+                            <div class="card mt-2" style="background: rgb(173, 170, 170); margin-bottom: 2%;">
+                              <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Opening Price
+                                  </button>
+                                </h5>
+                              </div>
+                          
+                              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion" style="background: white;">
+                                <div class="card-body">
+                                  <ul style="display: block;
+                                  list-style-type: disc;
+                                  margin-block-start: 1em;
+                                  margin-block-end: 1em;
+                                  margin-inline-start: 0px;
+                                  margin-inline-end: 0px;
+                                  padding-inline-start: 40px;
+                                  color: black;
+                                  font-size: 14px;
+                                  text-align: left;">
+                                      <li>Opening Price value is between 0 and 1</li>
+                                      <li> Opening Price value can be in decimal</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="card" style="background: rgb(173, 170, 170); margin-bottom: 2%;">
+                              <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    High Value
+                                  </button>
+                                </h5>
+                              </div>
+                              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion" style="background: white;">
+                                <div class="card-body">
+                                    <ul style="display: block;
+                                    list-style-type: disc;
+                                    margin-block-start: 1em;
+                                    margin-block-end: 1em;
+                                    margin-inline-start: 0px;
+                                    margin-inline-end: 0px;
+                                    padding-inline-start: 40px;
+                                    color: black;
+                                    font-size: 14px;
+                                    text-align: left;">
+                                        <li>High Price value is between 0 and 1</li>
+                                        <li> High Price value can be in decimal</li>
+                                    </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="card" style="background: rgb(173, 170, 170); margin-bottom: 2%;">
+                              <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Low Value
+                                  </button>
+                                </h5>
+                              </div>
+                              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion" style="background: white;">
+                                <div class="card-body">
+                                    <ul style="display: block;
+                                    list-style-type: disc;
+                                    margin-block-start: 1em;
+                                    margin-block-end: 1em;
+                                    margin-inline-start: 0px;
+                                    margin-inline-end: 0px;
+                                    padding-inline-start: 40px;
+                                    color: black;
+                                    font-size: 14px;
+                                    text-align: left;">
+                                        <li>Low price value is between 0 and 1</li>
+                                        <li> Low price value can be in decimal</li>
+                                    </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="card" style="background: rgb(173, 170, 170); margin-bottom: 2%;">
+                                <div class="card-header" id="headingFour">
+                                  <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                      Closing Price
+                                    </button>
+                                  </h5>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion" style="background: white;">
+                                  <div class="card-body">
+                                      <ul style="display: block;
+                                      list-style-type: disc;
+                                      margin-block-start: 1em;
+                                      margin-block-end: 1em;
+                                      margin-inline-start: 0px;
+                                      margin-inline-end: 0px;
+                                      padding-inline-start: 40px;
+                                      color: black;
+                                      font-size: 14px;
+                                      text-align: left;">
+                                          <li>Closing Price is between 0 and 1</li>
+                                          <li>Closing Price can be in decimal</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="card" style="background: rgb(173, 170, 170); margin-bottom: 2%;">
+                                <div class="card-header" id="headingFive">
+                                  <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                      Volume
+                                    </button>
+                                  </h5>
+                                </div>
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion" style="background: white;">
+                                  <div class="card-body">
+                                      <ul style="display: block;
+                                      list-style-type: disc;
+                                      margin-block-start: 1em;
+                                      margin-block-end: 1em;
+                                      margin-inline-start: 0px;
+                                      margin-inline-end: 0px;
+                                      padding-inline-start: 40px;
+                                      color: black;
+                                      font-size: 14px;
+                                      text-align: left;">
+                                          <li>Volume value is between 0 and 1</li>
+                                          <li>Volume value can be in decimal</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="w-100 text-center" style="background: #009cff; color: white; height: 50px">
+                                <h5 style="padding-top: 10px;">Steps To Follow</h5>
+                                </div>
+
+                            <div class="mt-3 ml-3" style="color: black; font-size: 20px; text-align: left;">
+                                <span style="font-weight: bolder; color:black;">Step 1 : </span> Select
+                                values of
+                                <span style="font-weight: bolder; color: #009cff">Open, High, Low, Close, Volume </span><br>
+                                <span style="font-weight: bolder; color:black;">Step 2 : </span> Click on
+                                <span style="font-weight: bolder; color: #009cff">Predict</span>
+                                Button<br>
+                                <span style="font-weight: bolder; color:black;">Step 3 : </span> Our Bitcoin Price Prediction System will predict Price.
+                                
+                              </div>
+
+
+                          </div>
+                      
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="col-5" style="background: rgba(247, 223, 227, 0.7);">
+            <div>
+          <h2 class="m-5" style="color: black;"><strong>Predict Price</strong></h2>
+            </div>
+
+            <div id="inputs-form">
+                <form action="/" method="POST">
+                    <div class="form-group row">
+                        <label class="col-lg-4 col-4 offset-lg-1" style="font-weight: bolder; font-size: large;">Open</label>
+                        <div class="col-lg-6 col-xl-5 col-6">
+                            <input name="openPrice" id="openPrice" type="text" placeholder="Enter Opening Price" style="background-color: rgb(0, 0, 0, 0.5);
+                            border-width: 3px;
+                            border-color: #f0526c;
+                            color: #f8f9fa;
+                            height: 40px;
+                            font-size: 18px;
+                            " onchange="checkSelection(this)" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-group row">
+                        <label class="col-lg-4 col-4 offset-lg-1" style="font-weight: bolder; font-size: large;">High</label>
+                        <div class="col-lg-6 col-xl-5 col-6">
+                            <input name="high" id="high" type="text" placeholder="Enter High" style="background-color: rgb(0, 1, 0, 0.4);
+                            border-width: 3px;
+                            border-color: #f0526c;
+                            color: #f8f9fa;
+                            height: 40px;
+                            font-size: 18px;
+                            " onchange="checkSelection(this)" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-group row">
+                        <label class="col-lg-4 col-4 offset-lg-1" style="font-weight: bolder; font-size: large;">Low</label>
+                        <div class="col-lg-6 col-xl-5 col-6">
+                            <input name="low" id="low" type="text" placeholder="Enter Low Price" style="background-color: rgb(0, 1, 0, 0.4);
+                            border-width: 3px;
+                            border-color: #f0526c;
+                            color: #f8f9fa;
+                            height: 40px;
+                            font-size: 18px;
+                            
+                            "onchange="checkSelection(this)" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-group row">
+                        <label class="col-lg-4 col-4 offset-lg-1" style="font-weight: bolder; font-size: large;">Close</label>
+                        <div class="col-lg-6 col-xl-5 col-6">
+                            <input name="close" id="close" type="text" placeholder="Enter Closing Price" style="background-color: rgb(0, 1, 0, 0.4);
+                            border-width: 3px;
+                            border-color: #f0526c;
+                            color: #f8f9fa;
+                            height: 40px;
+                            font-size: 18px;
+                            
+                            "onchange="checkSelection(this)" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-group row">
+                        <label class="col-lg-4 col-4 offset-lg-1" style="font-weight: bolder; font-size: large;">Volume</label>
+                        <div class="col-lg-6 col-xl-5 col-6">
+                            <input name="volume" id="volume" type="text" placeholder="Enter Volume" style="background-color: rgb(0, 1, 0, 0.4);
+                            border-width: 3px;
+                            border-color: #f0526c;
+                            color: #f8f9fa;
+                            height: 40px;
+                            font-size: 18px;"
+                            onchange="checkSelection(this)" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-group row mt-5">
+                        <div class="col-lg-8 offset-lg-2 col-9 offset-1 mb-5">
+                            <button type="submit" class="btn btn-success"  data-toggle="modal" data-target="#exampleModal" id="calculateButton">Predict</button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="box-sizing: content-box;">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                      
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" style="margin-left:26%; margin-right:17%;"><strong>Prediction Of Model</strong></h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="modal-body">
+                                        <button class="btn btn-success" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2" id="inputhandler">
+                                            Click to view inputs
+                                        </button>
+
+                                        <div class="row mt-3">
+                                            <div class="col-6">
+                                                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                                    <div class="card">
+                                                        <div class="card-header" style="background-color: #009cff; color: white;">
+                                                        <strong>Open</strong>
+                                                        </div>
+
+                                                        <div class="card-body">{{openPrice}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                                    <div class="card">
+                                                        <div class="card-header" style="background-color: #009cff; color: white;">
+                                                        <strong>High</strong>
+                                                        </div>
+
+                                                        <div class="card-body">{{high}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6 mt-2">
+                                                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                                    <div class="card">
+                                                        <div class="card-header" style="background-color: #009cff; color: white;">
+                                                        <strong>Low</strong>
+                                                        </div>
+
+                                                        <div class="card-body">{{low}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6 mt-2">
+                                                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                                    <div class="card">
+                                                        <div class="card-header" style="background-color: #009cff; color: white;">
+                                                        <strong>Close</strong>
+                                                        </div>
+
+                                                        <div class="card-body">{{close}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6 mt-2">
+                                                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                                    <div class="card">
+                                                        <div class="card-header" style="background-color: #009cff; color: white;">
+                                                        <strong>Volume</strong>
+                                                        </div>
+
+                                                        <div class="card-body">{{volume}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-3 collapse multi-collapse">
+                                            <i class="fa fa-arrow-down" style="padding-left: 43%; font-size: 70px;"></i>
+                                        </div>
+
+                                        <div class="result-box mt-3">
+                                            <p id="result">{{predicted_result}}</p>
+                                        </div>
+                                        
+                                    </div>
+    
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                
+                </form>
+                
+               
+            </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      function checkSelection(element) {
+  if (element.value != "") {
+    element.style.borderColor = "green"; //change color to green
+  }
+}
+
+$("#inputhandler").click(function () {
+  if ($("#inputhandler").attr("aria-expanded") == "false") {
+    document.getElementById("inputhandler").innerText =
+      "Click to minimize inputs";
+
+    $("#inputhandler").removeClass("btn-success");
+
+    $("#inputhandler").addClass("btn-secondary");
+  }
+
+  if ($("#inputhandler").attr("aria-expanded") == "true") {
+    document.getElementById("inputhandler").innerText = "Click to view inputs";
+
+    $("#inputhandler").removeClass("btn-secondary");
+
+    $("#inputhandler").addClass("btn-success");
+  }
+});
+
+
+
+// Handling of Result modal to be displayed 
+
+window.onload = function () { 
+
+        if (document.getElementById("result").innerText) { 
+    
+            $("#resultmodal").modal("show"); 
+    
+        } 
+    
+    }; 
+    </script>
+  </body>
+</html>
